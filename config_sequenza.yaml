@@ -1,0 +1,22 @@
+tumor:
+    /home/dhpan/test/sequenza_test/wgs/data/tumor.bam
+normal:
+    /home/dhpan/test/sequenza_test/wgs/data/normal.bam
+
+genome:
+    /home/whsong/project/DATA/Genome/ucsc_hg19_bigZips/ucsc.hg19.fasta
+
+gc50Base:
+    /home/dhpan/db/sequenza/hg19.gc50Base.txt
+
+sequenza-utils:
+    /home/dhpan/anaconda3/bin/sequenza-utils
+python3:
+    /home/dhpan/anaconda3/bin/python3
+parallel:
+    /home/dhpan/bin/parallel
+pigz:
+    /home/dhpan/anaconda3/bin/pigz
+
+Rscript:
+    /home/whsong/R-3.5.1/bin/Rscript

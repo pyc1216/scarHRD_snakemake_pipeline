@@ -1,0 +1,38 @@
+configfile:"config_sequenza.yaml"
+
+chromosome = [f"chr{i}" for i in range(1,23)] + ["chrX","chrY","chrM"]
+
+
+rule all:
+    input:
+        "sampleHRD/sampleHRD.successfully"
+
+
+rule bam2seqz_seqz_binning:
+    input:
+        tumor=config['tumor'],
+        normal=config['normal']
+    output:
+        "seqz_binning/sample_small.seqz"
+    params:
+        chr = " ".join(chromosome),
+        tempfile = "bam2seqz/bam2seqz"
+    log:
+        'logs/sequenza_bam2seqz.log'
+    script:
+        "/home/dhpan/code/sequenza/bam2seqz_seqz_binning_parallel.py"
+
+
+rule scarHRD:
+    input:
+        rules.bam2seqz_seqz_binning.output
+    output:
+        "sampleHRD/sampleHRD.successfully"
+    log:
+        "logs/scarHRD.logs"
+    params:
+        chromosome
+    script:
+        "/home/dhpan/code/sequenza/scarHRD.py"
+
+
